@@ -1,0 +1,230 @@
+AllCops:
+  TargetRubyVersion: 2.5
+  Exclude:
+    - "bin/*"
+    - "dummy/config/environments/*"
+    - "dummy/Gemfile"
+    - "dummy/Gemfile.lock"
+    - "Rakefile"
+
+
+# === METRICS =================================================================================== #
+
+# Commonly used screens these days easily fit more than 80 characters.
+Metrics/LineLength:
+  Max: 80
+
+# Too short methods lead to extraction of single-use methods, which can make
+# the code easier to read (by naming things), but can also clutter the class
+Metrics/MethodLength:
+  Max: 10
+
+# The guiding principle of classes is SRP, SRP can't be accurately measured by LoC
+Metrics/ClassLength:
+  Max: 100
+
+# Avoid writing of large modules
+Metrics/ModuleLength:
+  Max: 100
+
+# Avoid excessive block nesting
+Metrics/BlockNesting:
+  Max: 3
+
+# Create separate methods/services to be used within block
+Metrics/BlockLength:
+  Max:             3
+  Exclude:
+    - "dummy/config/initializers/**/*"
+
+# Avoid parameter lists longer than three or four parameters
+# https://github.com/bbatsov/ruby-style-guide#too-many-params
+Metrics/ParameterLists:
+  Max: 4
+
+
+# === LAYOUT ==================================================================================== #
+
+# Most readable form.
+Layout/AlignHash:
+  EnforcedHashRocketStyle: table
+  EnforcedColonStyle:      table
+
+# Add empty line after all guard clauses
+Layout/EmptyLineAfterGuardClause:
+  Enabled: true
+
+# Check space around operators
+Layout/SpaceAroundOperators:
+  Enabled: true
+
+# This cop checks for extra/unnecessary whitespace
+Layout/ExtraSpacing:
+  ForceEqualSignAlignment: true
+
+# Method chains are indented with 2 spaces
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle:    indented
+  IndentationWidth: 2
+
+# Multi-line expressions with operators are indented with 2 spaces
+Layout/MultilineOperationIndentation:
+  EnforcedStyle:    indented
+  IndentationWidth: 2
+
+# Check if tabulations throughout the project are the same: 2 spaces
+Layout/Tab:
+  IndentationWidth: 2
+
+# === LINT ====================================================================================== #
+
+# Suppressing exceptions can be perfectly fine, and be it to avoid to
+# explicitly type nil into the rescue since that's what you want to return,
+# or suppressing LoadError for optional dependencies
+Lint/HandleExceptions:
+  Enabled: false
+
+# Don't use assignment in conditions
+Lint/AssignmentInCondition:
+  AllowSafeAssignment: false
+
+# This cop checks for ambiguous operators in the first argument of a method invocation without parentheses.
+Lint/AmbiguousOperator:
+  Enabled: false
+
+# Shadowing outer local variables with block parameters is often useful
+# to not reinvent a new name for the same thing, it highlights the relation
+# between the outer variable and the parameter. The cases where it's actually
+# confusing are rare, and usually bad for other reasons already, for example
+# because the method is too long.
+Lint/ShadowingOuterLocalVariable:
+  Enabled: false
+
+# There are valid cases, for example debugging Cucumber steps,
+# also they'll fail CI anyway. Then add those files to exclude
+Lint/Debugger:
+  Enabled: true
+
+# Inherit errors from StandardError is more typical than from RuntimeError
+Lint/InheritException:
+  EnforcedStyle: standard_error
+
+# === NAMING ==================================================================================== #
+
+# Forbid numbers in variable names
+Naming/VariableNumber:
+  EnforcedStyle: non_integer
+
+# === RAILS ===================================================================================== #
+
+# ActiveSupport provides semantically great methods
+Rails/ActiveSupportAliases:
+  Enabled: false
+
+# Allow explicitly defined actions under `only/except keys` with controllers
+Rails/LexicallyScopedActionFilter:
+  Enabled: false
+
+# Avoid usage of `try` in advantage of `&.`
+Rails/SafeNavigation:
+  ConvertTry: true
+
+# === STYLE ===================================================================================== #
+
+# Allow private to be inlined in method definitions.
+Style/AccessModifierDeclarations:
+  Enabled: false
+
+# We do not need to support Ruby 1.9, so this is good to use.
+Style/SymbolArray:
+  Enabled: true
+
+# Mixing the styles looks just silly.
+Style/HashSyntax:
+  EnforcedStyle: ruby19_no_mixed_keys
+
+# String#% is by far the least verbose and only object oriented variant.
+Style/FormatString:
+  EnforcedStyle: percent
+
+# This cop enforces the use of consistent method names from the Enumerable module
+Style/CollectionMethods:
+  Enabled: true
+
+# Either allow this style or don't. Marking it as safe with parenthesis
+# is silly. Let's try to live without them for now.
+Style/ParenthesesAroundCondition:
+  AllowSafeAssignment: false
+
+# A specialized exception class will take one or more arguments and construct the message from it.
+# So both variants make sense.
+Style/RaiseArgs:
+  Enabled: false
+
+# Fail is an alias of raise. Avoid aliases, it's more cognitive load for no gain.
+# The argument that fail should be used to abort the program is wrong too,
+# there's Kernel#abort for that.
+Style/SignalException:
+  EnforcedStyle: only_raise
+
+# do / end blocks should be used for side effects,
+# methods that run a block for side effects and have
+# a useful return value are rare, assign the return
+# value to a local variable for those cases.
+Style/MethodCalledOnDoEndBlock:
+  Enabled: true
+
+# This cop enforces consistency between 'return nil' and 'return'
+Style/ReturnNil:
+  Enabled: true
+
+# This cop checks for the use of strings as keys in hashes. The use of symbols is preferred instead
+Style/StringHashKeys:
+  Enabled: true
+
+Style/MethodCallWithArgsParentheses:
+  Enabled: true
+
+# Enforcing the names of variables? To single letter ones? Just no.
+Style/SingleLineBlockParams:
+  Enabled: false
+
+# Check with yard instead.
+Style/Documentation:
+  Enabled: false
+
+# Style preference
+Style/MethodDefParentheses:
+  Enabled: false
+
+# Frozen Literals
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: always
+
+# Quotes
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+# Use unary plus to get an unfrozen string literal.
+Performance/UnfreezeString:
+  Enabled: false
+
+# Allow us to use `alias_method` in class body
+Style/Alias:
+  EnforcedStyle: prefer_alias_method
+
+# Allow us to use empty `case`
+Style/EmptyCaseCondition:
+  Enabled: false
+
+# Prefer `call` over `.()` shortcut
+Style/LambdaCall:
+  EnforcedStyle: call
+
+# Prefer `%r{}` over `//`. It better plays with slashes
+Style/RegexpLiteral:
+  EnforcedStyle: percent_r
+
+# Wrap complex conditions in ternary expressions with parentheses
+Style/TernaryParentheses:
+  EnforcedStyle: require_parentheses_when_complex
