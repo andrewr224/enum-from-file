@@ -1,3 +1,5 @@
+require: rubocop-rspec
+
 AllCops:
   TargetRubyVersion: 2.5
   Exclude:
@@ -8,6 +10,7 @@ AllCops:
     - "spec/dummy/Gemfile"
     - "spec/dummy/Gemfile.lock"
     - "spec/dummy/Rakefile"
+    - "spec/dummy/db/**/*"
     - "Rakefile"
     - "spec/spec_helper.rb"
     - "spec/rails_helper.rb"
@@ -42,6 +45,10 @@ Metrics/BlockLength:
   Exclude:
     - "dummy/config/initializers/**/*"
     - "enum_from_file.gemspec"
+    - "spec/enum_from_file/*"
+    - "spec/models/*"
+  ExcludedMethods:
+    - class_methods
 
 # Avoid parameter lists longer than three or four parameters
 # https://github.com/bbatsov/ruby-style-guide#too-many-params
