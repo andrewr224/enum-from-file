@@ -2,10 +2,15 @@ AllCops:
   TargetRubyVersion: 2.5
   Exclude:
     - "bin/*"
-    - "dummy/config/environments/*"
-    - "dummy/Gemfile"
-    - "dummy/Gemfile.lock"
+    - "spec/dummy/bin/*"
+    - "spec/dummy/config/environments/*"
+    - "spec/dummy/config/initializers/*"
+    - "spec/dummy/Gemfile"
+    - "spec/dummy/Gemfile.lock"
+    - "spec/dummy/Rakefile"
     - "Rakefile"
+    - "spec/spec_helper.rb"
+    - "spec/rails_helper.rb"
 
 
 # === METRICS =================================================================================== #
@@ -36,6 +41,7 @@ Metrics/BlockLength:
   Max:             3
   Exclude:
     - "dummy/config/initializers/**/*"
+    - "enum_from_file.gemspec"
 
 # Avoid parameter lists longer than three or four parameters
 # https://github.com/bbatsov/ruby-style-guide#too-many-params
@@ -180,9 +186,6 @@ Style/ReturnNil:
 
 # This cop checks for the use of strings as keys in hashes. The use of symbols is preferred instead
 Style/StringHashKeys:
-  Enabled: true
-
-Style/MethodCallWithArgsParentheses:
   Enabled: true
 
 # Enforcing the names of variables? To single letter ones? Just no.

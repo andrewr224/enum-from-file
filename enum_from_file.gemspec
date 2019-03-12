@@ -1,4 +1,6 @@
-$:.push File.expand_path("lib", __dir__)
+# frozen_string_literal: true
+
+$LOAD_PATH.push File.expand_path("lib", __dir__)
 
 require "enum_from_file/version"
 
@@ -12,12 +14,14 @@ Gem::Specification.new do |spec|
   spec.description = "Add `from_file` option to Rails enum."
   spec.license     = "MIT"
 
-  spec.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
+  spec.files = Dir[
+    "{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"
+  ]
 
   spec.add_dependency "rails", ">= 4.2.0"
 
-  spec.add_development_dependency "sqlite3", "~> 1.3.6"
-  spec.add_development_dependency "rspec-rails"
   spec.add_development_dependency "pry-rails"
+  spec.add_development_dependency "rspec-rails"
   spec.add_development_dependency "rubocop"
+  spec.add_development_dependency "sqlite3", "~> 1.3.6"
 end
