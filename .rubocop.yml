@@ -148,6 +148,10 @@ Rails/SafeNavigation:
 
 # === STYLE ===================================================================================== #
 
+# Allow 'ActiveRecord::Base' not to offend rubocop
+Style/ClassAndModuleChildren:
+  Enabled: false
+
 # Allow private to be inlined in method definitions.
 Style/AccessModifierDeclarations:
   Enabled: false

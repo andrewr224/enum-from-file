@@ -10,12 +10,22 @@ This makes little sense when you have a small enum with just a couple of options
 
 ## Usage
 1. Create a folder `/config/enums` to store your enum files in .yml format.
-2. Add `include EnumFromFile` to the `ApplicationRecord` or your target model.
-3. Make sure your enum column has a type `string`.
+2. Make sure your enum column has a type `string`.
 
 Et voila!
 
-Given a file `/config/enums/eye_colors.yml` you add eye_color enum to a Cat model with the following line:
+Given a file `/config/enums/eye_colors.yml` with the following content:
+```
+blue:   blue
+copper: copper
+yellow: yellow
+gold:   gold
+orange: orange
+green:  green
+red:    red
+```
+
+You can add eye_color enum to a Cat model with the following line:
 ```ruby
 enum :eye_color, from_file: :eye_colors
 ```
