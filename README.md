@@ -24,7 +24,8 @@ You can continue using regular syntax for regular cases:
 enum status: { active: active, archived: archived }
 ```
 
-All the options will be passed to native enum implementation as expected.
+**All the options will be passed to native enum implementation as expected.**
+
 
 You can structure your .yml file either as a hash
 ```
