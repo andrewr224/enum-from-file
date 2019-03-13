@@ -14,18 +14,7 @@ This makes little sense when you have a small enum with just a couple of options
 
 Et voila!
 
-Given a file `/config/enums/eye_colors.yml` with the following content:
-```
-blue:   blue
-copper: copper
-yellow: yellow
-gold:   gold
-orange: orange
-green:  green
-red:    red
-```
-
-You can add eye_color enum to a Cat model with the following line:
+Given a file `/config/enums/eye_colors.yml` you can add eye_color enum to a Cat model with the following line:
 ```ruby
 enum :eye_color, from_file: :eye_colors
 ```
@@ -36,6 +25,21 @@ enum status: { active: active, archived: archived }
 ```
 
 All the options will be passed to native enum implementation as expected.
+
+You can structure your .yml file either as a hash
+```
+blue:   blue
+copper: copper
+yellow: yellow
+```
+Or as a list
+```
+gold
+orange
+green
+red
+```
+The list will be converted automatically, so both structures yield the same result.
 
 ## Installation
 Add this line to your application's Gemfile:

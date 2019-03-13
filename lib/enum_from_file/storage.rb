@@ -24,12 +24,20 @@ module EnumFromFile
     def define_enum(file)
       define_singleton_method File.basename(file.path, ".yml") do
         instance_variable_get(instance_name(file)) ||
-          instance_variable_set(instance_name(file), YAML.safe_load(file))
+          instance_variable_set(instance_name(file), instance_value(file))
       end
     end
 
     def instance_name(file)
       "@#{File.basename(file.path, '.yml').to_sym}"
+    end
+
+    def instance_value(file)
+      values = YAML.safe_load(file)
+
+      return values.to_h unless values.is_a?(String)
+
+      Hash[values.split.map { |val| [val.to_sym, val.to_sym] }]
     end
   end
 end
