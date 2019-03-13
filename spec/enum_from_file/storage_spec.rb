@@ -15,10 +15,19 @@ describe EnumFromFile::Storage do
   end
 
   describe "returns hashes for each method" do
-    enums.each do |method|
-      it "returns a hash for ##{method}" do
-        expect(storage.send(method)).to be_a Hash
+    enums.each do |enum|
+      it "returns a hash for ##{enum}" do
+        expect(storage.values_from(file: enum)).to be_a Hash
       end
+    end
+  end
+
+  context "when file does not exist" do
+    let(:absent_enum) { :absent_enum }
+
+    it "raises error" do
+      expect { storage.values_from(file: absent_enum) }
+        .to raise_error StandardError
     end
   end
 end

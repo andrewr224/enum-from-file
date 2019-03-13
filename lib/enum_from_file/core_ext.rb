@@ -18,7 +18,7 @@ module EnumFromFile
       private
 
       def enum_from_file(file:)
-        EnumFromFile::Storage.instance.send(file)
+        EnumFromFile::Storage.instance.values_from(file: file)
       end
     end
   end

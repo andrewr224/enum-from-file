@@ -8,6 +8,12 @@ module EnumFromFile
       enum_files.each(&method(:define_enum))
     end
 
+    def values_from(file:)
+      send(file)
+    rescue NoMethodError
+      raise StandardError, "Cannot read 'config/enums/#{method_name}.yml'"
+    end
+
     private
 
     def enum_files
