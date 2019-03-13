@@ -1,6 +1,7 @@
 # EnumFromFile
 
 [![Build Status](https://semaphoreci.com/api/v1/andrewr224/enum-from-file/branches/master/badge.svg)](https://semaphoreci.com/andrewr224/enum-from-file)
+[![Gem Version](https://badge.fury.io/rb/enum_from_file.svg)](https://badge.fury.io/rb/enum_from_file)
 
 If you've ever found yourself in a situation where you feel like you should use enum, but it has 50 positions so you don't know where to put it, the answer is here!
 

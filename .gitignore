@@ -1,3 +1,4 @@
+enum_from_file-*
 .bundle/
 log/*.log
 pkg/
