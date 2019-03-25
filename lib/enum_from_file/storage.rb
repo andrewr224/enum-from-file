@@ -11,7 +11,7 @@ module EnumFromFile
     def values_from(file:)
       send(file)
     rescue NoMethodError
-      raise StandardError, "Cannot read 'config/enums/#{method_name}.yml'"
+      raise StandardError, "Cannot read 'config/enums/#{file}.yml'"
     end
 
     private
