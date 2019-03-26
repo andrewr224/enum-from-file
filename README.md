@@ -22,7 +22,7 @@ enum :eye_color, from_file: :eye_colors
 
 You can continue using regular syntax for regular cases:
 ```ruby
-enum status: { active: active, archived: archived }
+enum status: { active: "active", archived: "archived" }
 ```
 
 **All the options will be passed to native enum implementation as expected.**
@@ -47,17 +47,12 @@ The list will be converted automatically, so both structures yield the same resu
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'enum_from_file'
+gem "enum_from_file"
 ```
 
 And then execute:
 ```bash
 $ bundle
-```
-
-Or install it yourself as:
-```bash
-$ gem install enum_from_file
 ```
 
 ## Contributing

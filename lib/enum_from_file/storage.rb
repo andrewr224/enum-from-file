@@ -43,7 +43,7 @@ module EnumFromFile
 
       return values.to_h unless values.is_a?(String)
 
-      Hash[values.split.map { |val| [val.to_sym, val.to_sym] }]
+      Hash[values.split.map { |val| [val.to_sym, val] }]
     end
   end
 end
